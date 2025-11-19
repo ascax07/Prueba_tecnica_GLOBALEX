@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Productos - Prueba Técnica</title>
+</head>
+<body>
+
+  <h2>Lista de Productos</h2>
+
+  <table border="1" width="100%">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Cantidad Disponible</th>
+      </tr>
+    </thead>
+    <tbody id="tablaProductos"></tbody>
+  </table>
+
+  <hr>
+
+  <!-- Esta es la parte que debe implementar el candidato -->
+  <h3>Buscar productos por categoría</h3>
+  <input type="text" id="categoriaInput" placeholder="Ej: Tecnología" />
+  <button onclick="buscarPorCategoria()">Buscar</button>
+
+  <p id="mensaje"></p>
+
+  <script>
+    const API_URL = 'http://localhost:8080/productos';
+
+    // Cargar productos al iniciar
+    window.onload = cargarProductos;
+
+    function cargarProductos() {
+      fetch(API_URL)
+        .then(response => response.json())
+        .then(data => mostrarProductos(data))
+        .catch(error => console.error('Error cargando productos:', error));
+    }
+
+    function mostrarProductos(productos) {
+      const tabla = document.getElementById('tablaProductos');
+      tabla.innerHTML = '';
+
+      productos.forEach(p => {
+        tabla.innerHTML += `
+          <tr>
+            <td>${p.id}</td>
+            <td>${p.nombre}</td>
+            <td>${p.precio}</td>
+            <td>${p.cantidadDisponible}</td>
+          </tr>
+        `;
+      });
+    }
+
+    // Método que debe implementar el candidato
+    function buscarPorCategoria() {
+      const categoria = document.getElementById('categoriaInput').value.trim();
+
+      if (categoria === '') {
+        document.getElementById('mensaje').textContent = 'Ingrese una categoría.';
+        return;
+      }
+
+      // Espacio para implementar 
+      // el servicio /productos/categoria/{categoria}
+      // ejemplo       
+	  // fetch(`${API_URL}/categoria/${categoria}`)...
+      // 
+      
+      
+      document.getElementById('mensaje').textContent = 'Funcionalidad pendiente por implementar en la prueba.';
+    }
+  </script>
+</body>
+</html>
