@@ -67,14 +67,14 @@ public class ProductoController {
             throw new IllegalArgumentException("Categoría no válida: " + categoria);
         }
     }
-    // Manejo básico de errores (podrías extraer a @ControllerAdvice)
-    @ExceptionHandler(ProductoNoEncontradoException.class)
-    public ResponseEntity<String> manejarNoEncontrado(ProductoNoEncontradoException ex) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
-    }
+    // // Manejo básico de errores (podrías extraer a @ControllerAdvice)
+    // @ExceptionHandler(ProductoNoEncontradoException.class)
+    // public ResponseEntity<String> manejarNoEncontrado(ProductoNoEncontradoException ex) {
+    //     return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    // }
 
-    @ExceptionHandler({StockInsuficienteException.class, IllegalArgumentException.class})
-    public ResponseEntity<String> manejarBadRequest(RuntimeException ex) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
-    }
+    // @ExceptionHandler({StockInsuficienteException.class, IllegalArgumentException.class})
+    // public ResponseEntity<String> manejarBadRequest(RuntimeException ex) {
+    //     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    // }
 }
